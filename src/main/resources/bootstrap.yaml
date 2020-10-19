@@ -1,0 +1,20 @@
+spring:
+  cloud:
+    config:
+      server:        native:          search-locations: classpath:/cnf,classpath:/cnf/wechatApplet #设置读取配置文件的路径为classpath的cnf目录  profiles:    active:    - native #表示从本地读取配置文件
+  application:    name: gez-config
+
+server:  port: 8769 #设置服务的端口为8769
+  
+#------------------------------------------------EUREKA---------------------------------------------
+ 
+#eureka注册地址
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8001/eureka,http://localhost:8002/eureka
+      #通过ip注册
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    hostname: 127.0.0.1
