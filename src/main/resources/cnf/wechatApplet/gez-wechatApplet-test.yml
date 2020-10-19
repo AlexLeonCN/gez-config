@@ -44,5 +44,7 @@ eureka:
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
     hostname: 127.0.0.1
-lalala:
-  port: hahahahah
+
+#-------------------------百度AIP----------------------------------------------
+baiduOcrApiKey: IDtRTiQXWWxfhDiGiXU4FVtG
+baiduOcrSecretKey: YjnizcoGlIyhXicoRkpc5oxmLf5IBpRY
