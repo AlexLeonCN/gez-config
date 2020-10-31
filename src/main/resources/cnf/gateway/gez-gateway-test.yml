@@ -1,0 +1,40 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: gez-gateway #eureka注册实例显示这个名称
+  cloud:
+    gateway:
+      locator:  #路由访问方式：http://Gateway_HOST:Gateway_PORT/大写的serviceId/**，其中微服务应用名默认大写访问。
+        enabled: true
+      routes:
+       - id: webchatAppet
+         uri: lb://GEZ-WECHATAPPLET
+         predicates:
+          - Path=/wechatApplet/**
+         filters:
+          - StripPrefix=1
+       - id: webchatAppet
+         uri: http://www.163.com
+         predicates:
+          - Path=/163/**
+         
+    # id 我们自定义的路由ID 保持唯一     注意前面的-,切记不能省略
+    # uri 目标服务地址
+    # predicates(断言) 路由条件 predicate接受一个输入参数,返回一个布尔值结果,如果断言为真，则路由匹配
+    # predicate 组合成其他复杂的逻辑
+    # Path前面的-，切记不能省略
+#------------------------------------------------EUREKA---------------------------------------------
+ 
+#eureka注册地址
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8001/eureka
+      #通过ip注册
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    hostname: 127.0.0.1
+lalala:
+  test: 1010101
