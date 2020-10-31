@@ -14,10 +14,18 @@ spring:
           - Path=/wechatApplet/**
          filters:
           - StripPrefix=1
-       - id: webchatAppet
+       - id: 163
          uri: http://www.163.com
          predicates:
           - Path=/163/**
+       - id: baidu
+         uri: http://www.baidu.com
+         predicates:
+          - Path=/baidu/**
+       - id: CSDN
+         uri: https://www.csdn.net/
+         predicates:
+          - Path=/CSDN/**
          
     # id 我们自定义的路由ID 保持唯一     注意前面的-,切记不能省略
     # uri 目标服务地址
